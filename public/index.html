@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP Miro Board - UNIT.Hack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. БОКОВАЯ ПАНЕЛЬ (Sidebar) -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">▲</span>
+            <h2>UNIT.Board</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <p class="nav-title">МЕНЮ</p>
+            <a href="#" class="nav-item active" id="nav-boards">
+                <span class="icon">⊞</span> Доски
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">📄</span> Страницы
+            </a>
+            <a href="#" class="nav-item" id="nav-settings">
+                <span class="icon">⚙️</span> Настройки
+            </a>
+        </nav>
+    </aside>
+
+    <!-- 2. ВЕРХНЯЯ ШАПКА (Header) -->
+    <header class="topbar">
+        <div class="board-info">
+            <h1 id="boardTitle">Хакатон 2026: Главная доска <span class="star">☆</span></h1>
+        </div>
+        
+        <div class="topbar-actions">
+            <!-- Строка поиска (пока для красоты) -->
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Поиск задач...">
+            </div>
+            
+            <button class="share-btn">Share</button>
+            
+            <!-- ТВОЯ РАБОЧАЯ КНОПКА -->
+            <button id="addCardBtn" class="magic-btn">+ Создать</button>
+            
+            <div class="avatar">L</div>
+        </div>
+    </header>
+
+    <!-- НОВОЕ: МОДАЛЬНОЕ ОКНО НАСТРОЕК (вставляем над канвасом) -->
+    <div id="settingsModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Настройки проекта</h2>
+                <button id="closeModal" class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label>Название доски</label>
+                    <input type="text" id="boardNameInput" value="Хакатон 2026: Главная доска">
+                </div>
+                <div class="setting-item">
+                    <label>Цвет акцента (UI Тема)</label>
+                    <div class="color-picker">
+                        <div class="color-swatch active" data-color="#6366f1" style="background: #6366f1;"></div>
+                        <div class="color-swatch" data-color="#f43f5e" style="background: #f43f5e;"></div>
+                        <div class="color-swatch" data-color="#10b981" style="background: #10b981;"></div>
+                        <div class="color-swatch" data-color="#eab308" style="background: #eab308;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. БЕСКОНЕЧНЫЙ ХОЛСТ -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Скрипты -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
